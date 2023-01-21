@@ -26,9 +26,9 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['web-production-3ea6.up.railway.app','127.0.0.1']
+ALLOWED_HOSTS = ['web-production-a6875.up.railway.app','127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS = ['https://web-production-3ea6.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-a6875.up.railway.app']
 
 
 # Application definition
@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': 'yHmnZWmYiZpku4ArDfTX',
+        'HOST': 'containers-us-west-171.railway.app',
+        'PORT': '7826',
     }
 }
 
@@ -133,11 +137,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Update database configuration from 
-# $DATABASE_URL.
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
 
 # Simplified static file serving.
 # https://pypi.org/project/whitenoise/
